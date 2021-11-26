@@ -1,0 +1,7 @@
+media 
+
+**/__pycached__
+
+venv
+
+db.sqlite3

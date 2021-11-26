@@ -1,0 +1,80 @@
+crear carpeta donde se va alojar la aplicación
+INDIVIDUAL
+dentro de la carpeta abrimos visual studio code
+dentro de visual trabajamos con la consola de comandos
+1) Creamos el entorno virtual 
+	python -m venv (nombre_proyecto_principal) 
+	call nombre_proyecto_principal/Scripts/activate
+	call nombre_proyecto_principal/Scripts/deactivate
+2) Instalamos las librerias necesarias para el proyecto
+	pip install (libreria)
+	en este caso usamos Django
+	pip install (django)
+2) Revisamos la librería que se instaló 
+	pip freeze
+3) Creamos el archivo requeriments.txt para obtener un registro de las librerías utilizadas
+	pip freeze > requeriments.txt
+4) Inicializamos el proyecto con manage.py en el directorio principal
+	django-admin startproject (nombre_aplicación) .
+5) Verificamos que el servidor esté en funcionamiento
+	python manage.py runserver
+6) Crear la carpeta de la aplicación
+	python manage.py startapp (nombre_aplicación)
+
+7) Se trabaja con los archivos urls.py, views.py, settings.py de la aplicación 
+	urls.py y settings.py pertenecen a nombre_proyecto_principal
+	views.py pertence a nombre_aplicación
+7.1) en setting.py
+	 se busca dentro del archivo: INSTALLED_APPS
+	a esta lista se agrega nombre_aplicación
+7.2) en urls.py
+	se importa:
+	#from django.contrib import admin
+	from django.urls import path
+	from generator import views
+	urlpatterns = [
+    		#path('admin/', admin.site.urls),
+    		path('about',views.about),
+    		path('', views.home), # agregamos la otra vista con una nueva funcion que obtenemos de views
+		]
+7.3) en views.py:
+	se importa:
+	from django.shortcuts import render
+	#from django.http import HttpResponse # ESTE MODULO NOS SIRVE PARA PODER LLEVAR TEXTO A NUESTRO SITIO
+
+
+	# Create your views here.
+	def home(request):
+    		return render(request,'generator/home.html') 
+
+
+
+	def about(request):
+    		return render(request,'generator/about.html')
+	
+
+8) migrar datos a la base de datos
+	python manage.py makemigrations
+
+9) para ejecutar las tablas donde pondremmos los datos
+	python manage.py migrate
+
+10) creando super usuario
+	python manage.py createsuperuser
+	rellenar los datos que se piden por consola
+
+
+DATO: CREAR UN SERVIDOR CON PYTHON 
+1) CREAR UNA CARPETA DONDE ALOJAR EL SERVIDOR 
+2) ABRIR VIDUAL ESTUDIO CODE
+3) ABRIR TERMINAL
+	python -m http.server
+
+SE USA PARA HACKING ETICO, NO ES SEGURO PARA LAS APPWEB
+
+
+
+
+
+DATO: comando que nos sirve para multiplicar etiquetas en html 
+option{$ characters}*7 
